@@ -3,7 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
-    id 'kotlinx-serialization'
+    //id 'kotlinx-serialization'
     //id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
@@ -77,6 +77,11 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     //because we use serialization and deserialization
     implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
+    //Interceptor
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.3"))
+    // define any required OkHttp artifacts without version
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
 
     // Dagger - Hilt
     implementation "com.google.dagger:hilt-android:2.38.1"
@@ -89,4 +94,12 @@ dependencies {
 
     // Palette API --> display color based on the image we show to user
     implementation "androidx.palette:palette-ktx:1.0.0"
+
+    // Moshi : A modern JSON API for Android and Java
+    implementation 'com.squareup.moshi:moshi:1.13.0'
+    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.13.0'
+    implementation 'com.squareup.moshi:moshi-kotlin:1.13.0'
+    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+
+
 }
