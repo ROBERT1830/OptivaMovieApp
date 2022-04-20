@@ -4,5 +4,6 @@ data class CatalogUseCases(
     val searchMovies: SearchMovies,
     val trackMovie: TrackMovie,
     val deleteTrackedMovie: DeleteTrackedMovie,
-    val getTrackedMovies: GetTrackedMovies
+    val getTrackedMovies: GetTrackedMovies,
+    val searchMovie: SearchMovie
 )

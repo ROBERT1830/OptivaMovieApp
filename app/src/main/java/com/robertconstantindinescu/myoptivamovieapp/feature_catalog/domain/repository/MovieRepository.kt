@@ -1,12 +1,15 @@
 package com.robertconstantindinescu.myoptivamovieapp.feature_catalog.domain.repository
 
+import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.domain.model.ExtendedTrackableMovie
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.domain.model.TrackableMovie
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.domain.model.TrackedMovie
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
 
-    suspend fun searchMovie(): Result<List<TrackableMovie>>
+    suspend fun searchMovies(): Result<List<TrackableMovie>>
+    suspend fun searchMovie(movieId: String): Result<ExtendedTrackableMovie>
+
 
     // TODO: implement functions for local
 

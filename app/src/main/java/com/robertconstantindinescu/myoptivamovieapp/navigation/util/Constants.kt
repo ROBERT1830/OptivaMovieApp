@@ -7,4 +7,5 @@ object Constants {
 
     const val CATALOG = "Catalog"
     const val FAVORITES = "Favorites"
+    const val DETAILS_ARGUMENT_KEY = "externalMovieId"
 }

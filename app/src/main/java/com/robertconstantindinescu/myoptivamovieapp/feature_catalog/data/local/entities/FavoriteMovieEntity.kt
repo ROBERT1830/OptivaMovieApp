@@ -2,8 +2,7 @@ package com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.local.
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.remote.dto.Attachment
-import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.remote.dto.Response
+import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.remote.dto_movies.Attachment
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.util.Constants.FAVORITE_MOVIE_TABLE
 
 @Entity(tableName = FAVORITE_MOVIE_TABLE)

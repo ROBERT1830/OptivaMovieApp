@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.core.util.LocalSpacing
@@ -31,7 +32,8 @@ fun CatalogScreen(
     Column(modifier = Modifier
         .fillMaxSize()
     ) {
-        LazyColumn(modifier = Modifier.fillMaxSize()){
+        LazyColumn(modifier = Modifier.fillMaxSize()
+            .padding(PaddingValues(bottom = 50.dp))){
             items(state.trackableMovies){ movie ->
                 TrackableMovieItem(
                     modifier = Modifier
@@ -39,7 +41,7 @@ fun CatalogScreen(
                         .padding(spacing.spaceMedium),
                     trackableMovie = movie,
                     onTrackableMovieClick = {
-                        onNavigateToDetails(movie.externalId)
+                        movie.externalId?.let { onNavigateToDetails(it) }
                     },
                     onFavoriteToggle = {
                         viewModel.onEvent(CatalogScreenEvent.OnTrackMovieClick(movie = movie))

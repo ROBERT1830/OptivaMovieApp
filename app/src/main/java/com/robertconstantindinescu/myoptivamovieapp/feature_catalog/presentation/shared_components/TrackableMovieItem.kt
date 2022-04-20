@@ -119,7 +119,7 @@ fun TrackableMovieItem(
 
                 ) {
                     Text(
-                        text = trackableMovie.name,
+                        text = trackableMovie.name?:"",
                         style = MaterialTheme.typography.h6,
                         maxLines = 1
                     )
@@ -136,7 +136,7 @@ fun TrackableMovieItem(
                         .fillMaxWidth()
                 ) {
                     Text(
-                        text = trackableMovie.description,
+                        text = trackableMovie.description?:"",
                         style = MaterialTheme.typography.subtitle1,
                         maxLines = 3,
                         overflow = TextOverflow.Ellipsis,

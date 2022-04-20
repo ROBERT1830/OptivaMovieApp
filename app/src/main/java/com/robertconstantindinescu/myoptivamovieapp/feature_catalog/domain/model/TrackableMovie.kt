@@ -1,14 +1,13 @@
 package com.robertconstantindinescu.myoptivamovieapp.feature_catalog.domain.model
 
-import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.remote.dto.Attachment
-import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.remote.dto.Response
+import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.remote.dto_movies.Attachment
 
 data class TrackableMovie(
-    val name: String,
-    val year: Int,
-    val contentProvider: String,
+    val name: String ? = null,
+    val year: Int? = null,
+    val contentProvider: String? = null,
     val attachments: List<Attachment>,
-    val externalId: String,
-    val description: String
+    val externalId: String? = null,
+    val description: String? = null
     //val response: Response
 )

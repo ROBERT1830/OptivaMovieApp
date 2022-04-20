@@ -3,8 +3,7 @@ package com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.local
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.remote.dto.Attachment
-import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.remote.dto.Response
+import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.remote.dto_movies.Attachment
 
 
 class TypeConverter {
