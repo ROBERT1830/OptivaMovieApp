@@ -21,7 +21,7 @@ fun DetailsScreen(
 ) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Text(
-            text = "Details Screen",
+            text = externalMovieId,
             style = MaterialTheme.typography.body1
         )
     }

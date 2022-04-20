@@ -116,7 +116,7 @@ fun TrackableMovieItem(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .fillMaxHeight(0.2f)
+
                 ) {
                     Text(
                         text = trackableMovie.name,
@@ -130,11 +130,10 @@ fun TrackableMovieItem(
                         maxLines = 1
                     )
                 }
+                Spacer(modifier = Modifier.height(spacing.spaceLarge))
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .fillMaxHeight(0.8f),
-                    verticalAlignment = Alignment.Bottom
                 ) {
                     Text(
                         text = trackableMovie.description,
