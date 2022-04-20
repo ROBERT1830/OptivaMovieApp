@@ -64,24 +64,7 @@ fun TrackableMovieItem(
             onTrackableMovieClick()
         }
     ) {
-        IconButton(
-            onClick = { onFavoriteToggle() },
-            modifier = Modifier
-                .align(Alignment.TopEnd)
-                .size(IconSizeLarge)
-        ) {
-            Icon(
-                imageVector =
-                Icons.Default.Favorite,
-                contentDescription = stringResource(id = R.string.ic_favorite),
-                tint = if (isAddedToFav) {
-                    MaterialTheme.colors.primary
-                } else {
-                    MaterialTheme.colors.surface
-                }
-            )
 
-        }
 
         Surface(
             shape = RoundedCornerShape(size = LARGE_PADDING),
@@ -146,6 +129,27 @@ fun TrackableMovieItem(
 
 
             }
+
+        }
+        IconButton(
+            onClick = { onFavoriteToggle() },
+            modifier = Modifier
+                .padding(all = spacing.spaceMedium)
+                .align(Alignment.TopEnd)
+                .size(IconSizeLarge)
+
+        ) {
+            Icon(
+                modifier = Modifier.size(IconSizeLarge),
+                imageVector =
+                Icons.Default.Favorite,
+                contentDescription = stringResource(id = R.string.ic_favorite),
+                tint = if (isAddedToFav) {
+                    MaterialTheme.colors.primary
+                } else {
+                    MaterialTheme.colors.surface
+                }
+            )
 
         }
     }
