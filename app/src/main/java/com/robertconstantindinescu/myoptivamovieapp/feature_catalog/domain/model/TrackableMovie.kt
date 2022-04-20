@@ -9,5 +9,6 @@ data class TrackableMovie(
     val contentProvider: String,
     val attachments: List<Attachment>,
     val externalId: String,
+    val description: String
     //val response: Response
 )
