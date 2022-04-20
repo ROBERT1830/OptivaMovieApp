@@ -9,6 +9,7 @@ fun Response.toTrackableMovie(): TrackableMovie {
         year = this.year,
         contentProvider = this.contentProvider,
         attachments = this.attachments,
-        externalId = this.externalId
+        externalId = this.externalId,
+        //response =  this
     )
 }

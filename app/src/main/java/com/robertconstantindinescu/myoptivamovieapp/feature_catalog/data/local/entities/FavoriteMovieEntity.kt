@@ -2,6 +2,7 @@ package com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.local.
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.remote.dto.Attachment
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.remote.dto.Response
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.util.Constants.FAVORITE_MOVIE_TABLE
 
@@ -20,8 +21,13 @@ data class FavoriteMovieEntity(
 //    val definition: String,
 //    val genre: String,
     @PrimaryKey(autoGenerate = true)
-    var id: Int,
-    var externalId: String,
-    var result: Response,
-    var name: String,
+    var id: Int? = null,
+//    var externalId: String,
+//    var result: Response,
+//    var name: String,
+    val name: String,
+    val year: Int,
+    val contentProvider: String,
+    val attachments: List<Attachment>,
+    val externalId: String,
     )

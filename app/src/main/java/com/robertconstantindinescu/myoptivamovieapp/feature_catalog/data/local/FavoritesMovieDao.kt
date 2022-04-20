@@ -1,13 +1,10 @@
 package com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.local
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.local.entities.FavoriteMovieEntity
 import kotlinx.coroutines.flow.Flow
 
-
+@Dao
 interface FavoritesMovieDao {
 
     @Query("SELECT * FROM favorite_movie_table")
