@@ -14,6 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.robertconstantindinescu.myoptivamovieapp.R
@@ -49,16 +51,14 @@ fun TrackableMovieItem(
         }
     }
 
-    Log.d("BASE_IMAGE_URL","$BASE_IMAGE_URL${imageUrl}" )
+    Log.d("BASE_IMAGE_URL", "$BASE_IMAGE_URL${imageUrl}")
 
 
-
-
-    val painter = rememberImagePainter(data = "$BASE_IMAGE_URL${imageUrl}"){
+    val painter = rememberImagePainter(data = "$BASE_IMAGE_URL${imageUrl}") {
         placeholder(R.drawable.ic_placeholder)
         error(R.drawable.ic_placeholder)
     }
-    
+
     Box(modifier = modifier
         .clickable {
             onTrackableMovieClick()
@@ -66,65 +66,85 @@ fun TrackableMovieItem(
     ) {
         IconButton(
             onClick = { onFavoriteToggle() },
-            modifier = Modifier.align(Alignment.TopEnd)
+            modifier = Modifier
+                .align(Alignment.TopEnd)
                 .size(IconSizeLarge)
         ) {
-            Icon(imageVector =
-            Icons.Default.Favorite,
+            Icon(
+                imageVector =
+                Icons.Default.Favorite,
                 contentDescription = stringResource(id = R.string.ic_favorite),
-                tint = if (isAddedToFav){
+                tint = if (isAddedToFav) {
                     MaterialTheme.colors.primary
-                }else {
+                } else {
                     MaterialTheme.colors.surface
                 }
             )
 
         }
-        
-        Surface(shape = RoundedCornerShape(size = LARGE_PADDING)) {
-            
+
+        Surface(
+            shape = RoundedCornerShape(size = LARGE_PADDING),
+            modifier = Modifier
+                .fillMaxHeight()
+        ) {
+
             Image(
                 modifier = Modifier.fillMaxSize(),
-                painter = painter, 
+                painter = painter,
                 contentDescription = stringResource(id = R.string.movie_image),
                 contentScale = ContentScale.Crop
             )
         }
-        
+
         Surface(
             modifier = Modifier
                 .fillMaxHeight(0.4f)
-                .fillMaxWidth(),
-            color = Color.Black.copy(alpha = ContentAlpha.medium),
+                .fillMaxWidth()
+                .align(Alignment.BottomStart),
+            color = Color.Black,
             shape = RoundedCornerShape(
                 bottomStart = LARGE_PADDING,
                 bottomEnd = LARGE_PADDING
             )
         ) {
-            Column(modifier = Modifier
-                .fillMaxSize()
-                .padding(MEDIUM_PADDING)
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(MEDIUM_PADDING)
             ) {
-                Row(modifier = Modifier
-                    .fillMaxWidth()
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight(0.2f)
                 ) {
                     Text(
-                        text =  trackableMovie.name,
-                        style = MaterialTheme.typography.body2,
+                        text = trackableMovie.name,
+                        style = MaterialTheme.typography.h6,
                         maxLines = 1
                     )
                     Spacer(modifier = Modifier.width(spacing.spaceMedium))
                     Text(
-                        text =  trackableMovie.year.toString(),
-                        style = MaterialTheme.typography.body2,
+                        text = trackableMovie.year.toString(),
+                        style = MaterialTheme.typography.h6,
                         maxLines = 1
                     )
                 }
-                Text(
-                    text =  trackableMovie.name,
-                    style = MaterialTheme.typography.subtitle1,
-                    maxLines = 3
-                )
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight(0.8f),
+                    verticalAlignment = Alignment.Bottom
+                ) {
+                    Text(
+                        text = trackableMovie.description,
+                        style = MaterialTheme.typography.subtitle1,
+                        maxLines = 3,
+                        overflow = TextOverflow.Ellipsis,
+
+                        )
+                }
+
 
             }
 

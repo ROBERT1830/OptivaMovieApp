@@ -10,6 +10,7 @@ fun Response.toTrackableMovie(): TrackableMovie {
         contentProvider = this.contentProvider,
         attachments = this.attachments,
         externalId = this.externalId,
+        description = this.description
         //response =  this
     )
 }

@@ -26,12 +26,11 @@ fun CatalogScreen(
 
     Column(modifier = Modifier
         .fillMaxSize()
-        .padding(spacing.spaceMedium)
     ) {
         LazyColumn(modifier = Modifier.fillMaxSize()){
             items(state.trackableMovies){ movie ->
                 TrackableMovieItem(
-                    modifier = Modifier.height(MOVIE_ITEM_HEIGHT),
+                    modifier = Modifier.height(MOVIE_ITEM_HEIGHT).padding(spacing.spaceMedium),
                     trackableMovie = movie,
                     onTrackableMovieClick = {
                         onNavigateToDetails(movie.externalId)
@@ -43,6 +42,9 @@ fun CatalogScreen(
 
             }
         }
+
+
+
 
     }
 
