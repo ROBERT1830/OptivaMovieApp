@@ -9,7 +9,7 @@ data class Response(
     @Json(name = "attachments")
     val attachments: List<Attachment>,
     @Json(name = "awards")
-    val awards: List<Award>,
+    val awards: List<Award>? = null,
     @Json(name = "contentProvider")
     val contentProvider: String,
     @Json(name = "definition")

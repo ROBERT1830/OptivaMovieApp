@@ -7,7 +7,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Award(
     @Json(name = "title")
-    val title: String,
+    val title: String? = null,
     @Json(name = "year")
-    val year: Int
+    val year: Int? = null
 )
