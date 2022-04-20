@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">MyOptivaMovieApp</string>
     <string name="catalog">Catalog</string>
+    <string name="generic_error">Something went wrong!</string>
+    <string name="saved_to_favorites">Movie has been saved to favorites</string>
+    <string name="movie_image">Movie Image</string>
+    <string name="ic_favorite">Favorite</string>
 </resources>

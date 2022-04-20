@@ -10,15 +10,19 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.presentation.catalog_screen.CatalogScreen
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.presentation.details_screen.DetailsScreen
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.presentation.favorites_screen.FavoritesScreen
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.presentation.shared_components.BottomNavMenu
 import com.robertconstantindinescu.myoptivamovieapp.ui.theme.MyOptivaMovieAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,16 +65,37 @@ class MainActivity : ComponentActivity() {
                             startDestination = BottomMenuScreen.Catalog.route
                         ) {
                             composable(route = BottomMenuScreen.Catalog.route) {
-                                CatalogScreen(navController = navController)
+                                CatalogScreen(
+                                    onNavigateToDetails = {externalMovieId ->
+                                        navController.navigate(
+                                            Screen.DetailsScreen.route + "/$externalMovieId"
+                                        )
+                                    }
+                                )
                             }
 
+                            composable(
+                                route = Screen.DetailsScreen.route+"/{externalMovieId}",
+                                arguments = listOf(
+                                    navArgument("externalMovieId"){
+                                        type = NavType.StringType
+                                    }
+                                )
+                            ) {
+                                val externalMovieId = it.arguments?.getString("externalMovieId")!!
+
+                                DetailsScreen(
+                                    scrollState = scrollState,
+                                    scaffoldState = scaffoldState,
+                                    externalMovieId = externalMovieId,
+                                    onNavigateUp = {
+                                        navController.navigateUp()
+                                    }
+                                )
+                            }
                             composable(route = BottomMenuScreen.Favorites.route) {
                                 FavoritesScreen(navController = navController)
                             }
-                            composable(route = Screen.DetailsScreen.route) {
-                                DetailsScreen(navController = navController)
-                            }
-
                         }
                     }
 

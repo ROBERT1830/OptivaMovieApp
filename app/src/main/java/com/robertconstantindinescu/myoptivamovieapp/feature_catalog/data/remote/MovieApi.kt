@@ -5,10 +5,8 @@ import retrofit2.http.GET
 
 interface MovieApi {
 
-    @GET("stv/api/rtv/v1/GetUnifiedList?\n" +
-            "client=json&statuses=published&definitions=SD;HD;4K&external_category_id=S\n" +
-            "ED_3880&filter_empty_categories=true")
+    @GET("GetUnifiedList?client=json&external_category_id=U7D_14039&statuses=published&definitions=SD;HD&order=asc&order_by=tree&from=0&count=5")
     suspend fun searchMovies(): ApiResponse
 
-
+    ////GetUnifiedList?client=json&external_category_id=U7D_14039&statuses=published&definitions=SD;HD&order=asc&order_by=tree&from=0&count=5
 }

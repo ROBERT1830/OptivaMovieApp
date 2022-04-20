@@ -5,6 +5,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.core.util.Dimensions
+import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.core.util.LocalSpacing
 
 private val DarkColorPalette = darkColors(
     primary = GreenAccent,
@@ -43,10 +46,13 @@ fun MyOptivaMovieAppTheme(
 //        LightColorPalette
 //    }
 
-    MaterialTheme(
-        colors = DarkColorPalette,
-        typography = Typography,
-        shapes = Shapes,
-        content = content
-    )
+    CompositionLocalProvider(LocalSpacing provides Dimensions()) {
+        MaterialTheme(
+            colors = DarkColorPalette,
+            typography = Typography,
+            shapes = Shapes,
+            content = content
+        )
+    }
+
 }
