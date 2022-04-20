@@ -4,8 +4,10 @@ import android.app.Application
 import androidx.room.Room
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.local.FavoriteMovieDatabase
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.remote.MovieApi
+import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.repository.MovieRepositoryImpl
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.util.Constants.BASE_URL
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.util.Constants.DATABASE_NAME
+import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.domain.repository.MovieRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -56,6 +58,18 @@ object CatalogDataModule {
             FavoriteMovieDatabase::class.java,
             DATABASE_NAME
         ).build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideMovieRepository(
+        api: MovieApi,
+        db: FavoriteMovieDatabase
+    ): MovieRepository{
+        return MovieRepositoryImpl(
+            dao = db.dao,
+            api = api
+        )
     }
 
 

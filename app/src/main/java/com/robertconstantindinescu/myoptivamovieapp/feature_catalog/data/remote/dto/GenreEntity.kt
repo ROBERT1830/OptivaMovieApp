@@ -8,8 +8,8 @@ import com.squareup.moshi.JsonClass
 data class GenreEntity(
 //    @Json(name = "externalId")
 //    val externalId: String,
-    @Json(name = "id")
-    val id: Int,
+//    @Json(name = "id")
+//    val id: Int,
     @Json(name = "name")
     val name: String,
 //    @Json(name = "parentName")
