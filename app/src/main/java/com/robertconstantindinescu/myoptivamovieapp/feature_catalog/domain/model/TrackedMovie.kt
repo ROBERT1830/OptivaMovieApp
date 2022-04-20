@@ -1,7 +1,6 @@
 package com.robertconstantindinescu.myoptivamovieapp.feature_catalog.domain.model
 
-import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.remote.dto.Attachment
-import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.remote.dto.Response
+import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.remote.dto_movies.Attachment
 
 data class TrackedMovie(
     var id: Int? = null,

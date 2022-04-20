@@ -22,7 +22,8 @@ object CatalogDomainModule {
             searchMovies = SearchMovies(repository),
             trackMovie = TrackMovie(repository),
             deleteTrackedMovie = DeleteTrackedMovie(repository),
-            getTrackedMovies = GetTrackedMovies(repository)
+            getTrackedMovies = GetTrackedMovies(repository),
+            searchMovie = SearchMovie(repository)
         )
     }
 }

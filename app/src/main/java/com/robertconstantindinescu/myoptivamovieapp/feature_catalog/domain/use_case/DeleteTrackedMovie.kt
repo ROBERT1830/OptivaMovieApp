@@ -10,11 +10,11 @@ class DeleteTrackedMovie(
     suspend operator fun invoke(trackableMovie: TrackableMovie){
         repository.deleteTrackedMovie(
             TrackedMovie(
-                name = trackableMovie.name,
-                contentProvider = trackableMovie.contentProvider,
+                name = trackableMovie.name?:"",
+                contentProvider = trackableMovie.contentProvider?:"",
                 attachments = trackableMovie.attachments,
-                externalId = trackableMovie.externalId,
-                year = trackableMovie.year
+                externalId = trackableMovie.externalId?:"",
+                year = trackableMovie.year?:-1
             )
 
         )

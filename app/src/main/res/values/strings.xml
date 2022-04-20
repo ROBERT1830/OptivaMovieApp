@@ -6,4 +6,8 @@
     <string name="movie_image">Movie Image</string>
     <string name="ic_favorite">Favorite</string>
     <string name="no_results">No results....</string>
+    <string name="about">Descripción</string>
+    <string name="other">Otros</string>
+    <string name="genre">Género</string>
+    <string name="close_icon">Close Icon</string>
 </resources>
