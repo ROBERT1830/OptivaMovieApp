@@ -44,7 +44,25 @@ class CatalogScreenViewModel @Inject constructor(
             is CatalogScreenEvent.OnDeleteTrackedMovieClick -> {
                 deleteTrackedMovie(event.movie)
             }
+            is CatalogScreenEvent.GetMovieImage -> {
+                getMovieImage(event.movie)
+            }
+
         }
+    }
+
+    private fun getMovieImage(trackableMovie: TrackableMovie) {
+
+        val movieImage = useCases.getMovieImage(trackableMovie = trackableMovie)
+        state = state.copy(movieImage = movieImage)
+
+//        state.trackableMovies.map {
+//            if (it.name == trackableMovie.name) {
+//                it.copy(imageUrl = movieImage)
+//            } else it
+//        }
+
+
     }
 
     private fun executeSearch() {

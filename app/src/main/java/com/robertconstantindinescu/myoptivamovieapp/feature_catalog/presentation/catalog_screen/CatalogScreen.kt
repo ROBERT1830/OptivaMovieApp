@@ -62,6 +62,7 @@ fun CatalogScreen(
             .padding(PaddingValues(bottom = 50.dp))){
             items(state.trackableMovies){ movie ->
                 TrackableMovieItem(
+                    viewModel = viewModel,
                     modifier = Modifier
                         .height(MOVIE_ITEM_HEIGHT)
                         .padding(spacing.spaceMedium),

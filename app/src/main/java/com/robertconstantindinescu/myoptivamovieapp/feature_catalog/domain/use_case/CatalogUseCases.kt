@@ -6,5 +6,6 @@ data class CatalogUseCases(
     val deleteFavoriteMovieFromCatalogScreen: DeleteFavoriteMovieFromCatalogScreen,
     val getTrackedMovies: GetTrackedMovies,
     val searchMovie: SearchMovie,
-    val deleteFavoriteMovieFromFavScreen: DeleteFavoriteMovieFromFavScreen
+    val deleteFavoriteMovieFromFavScreen: DeleteFavoriteMovieFromFavScreen,
+    val getMovieImage: GetMovieImage
 )

@@ -11,6 +11,7 @@ data class TrackableMovie(
     val externalId: String? = null,
     val description: String? = null,
 
-    val isSavedToFav: Boolean? = false
+    val isSavedToFav: Boolean? = false,
+    val imageUrl: String? = null
     //val response: Response
 )

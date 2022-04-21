@@ -5,5 +5,6 @@ import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.domain.model
 data class CatalogScreenState(
     val trackableMovies: List<TrackableMovie> = emptyList(),
     val isFavoriteToggle: Boolean = false,
-    val isSearching: Boolean = false
+    val isSearching: Boolean = false,
+    val movieImage: String ? = null
 )

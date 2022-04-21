@@ -8,4 +8,5 @@ sealed class CatalogScreenEvent{
         val movie: TrackableMovie
     ):CatalogScreenEvent()
     data class OnDeleteTrackedMovieClick(val movie: TrackableMovie): CatalogScreenEvent()
+    data class GetMovieImage(val movie: TrackableMovie): CatalogScreenEvent()
 }
