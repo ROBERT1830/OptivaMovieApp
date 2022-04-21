@@ -11,7 +11,8 @@ fun FavoriteMovieEntity.toTrackedMovie(): TrackedMovie{
         year = this.year,
         contentProvider = this.contentProvider,
         attachments = this.attachments,
-        externalId = this.externalId
+        externalId = this.externalId,
+        description = this.description
     )
 
 //    id = this.id,
@@ -27,6 +28,7 @@ fun TrackedMovie.toFavoriteMovieEntity(): FavoriteMovieEntity{
         year = this.year,
         contentProvider = this.contentProvider,
         attachments = this.attachments,
-        externalId = this.externalId
+        externalId = this.externalId,
+        description = this.description?:""
     )
 }

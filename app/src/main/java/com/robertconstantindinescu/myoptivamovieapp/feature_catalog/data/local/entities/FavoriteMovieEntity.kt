@@ -29,4 +29,5 @@ data class FavoriteMovieEntity(
     val contentProvider: String,
     val attachments: List<Attachment>,
     val externalId: String,
+    val description: String
     )

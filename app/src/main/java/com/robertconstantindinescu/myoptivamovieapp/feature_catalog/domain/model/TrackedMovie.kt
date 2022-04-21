@@ -12,4 +12,5 @@ data class TrackedMovie(
     val contentProvider: String,
     val attachments: List<Attachment>,
     val externalId: String,
+    val description: String?=null
 )

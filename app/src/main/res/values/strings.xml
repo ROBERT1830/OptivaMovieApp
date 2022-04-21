@@ -11,4 +11,5 @@
     <string name="genre">Género</string>
     <string name="close_icon">Close Icon</string>
     <string name="favorite_movie_deleted">Favorite movie has been deleted</string>
+    <string name="ic_delete">Delte Icon</string>
 </resources>

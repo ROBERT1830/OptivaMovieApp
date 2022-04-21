@@ -16,7 +16,8 @@ class TrackMovie(
                 year = trackableMovie.year?:-1,
                 contentProvider = trackableMovie.contentProvider?:"",
                 attachments = trackableMovie.attachments,
-                externalId = trackableMovie.externalId?:""
+                externalId = trackableMovie.externalId?:"",
+                description = trackableMovie.description?:""
             )
         )
     }
