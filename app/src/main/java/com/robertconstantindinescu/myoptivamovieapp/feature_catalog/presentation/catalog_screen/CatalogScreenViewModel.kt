@@ -98,7 +98,7 @@ class CatalogScreenViewModel @Inject constructor(
 
     private fun deleteTrackedMovie(trackableMovie: TrackableMovie) {
         viewModelScope.launch {
-            useCases.deleteTrackedMovie(trackableMovie = trackableMovie)
+            useCases.deleteFavoriteMovieFromCatalogScreen(trackableMovie = trackableMovie)
             state = state.copy(
                 trackableMovies = state.trackableMovies.map {
                     if (it.name == trackableMovie.name){

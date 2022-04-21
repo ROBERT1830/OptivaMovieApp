@@ -4,7 +4,7 @@ import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.domain.model
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.domain.model.TrackedMovie
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.domain.repository.MovieRepository
 
-class DeleteTrackedMovie(
+class DeleteFavoriteMovieFromCatalogScreen(
     private val repository: MovieRepository
 ) {
     suspend operator fun invoke(trackableMovie: TrackableMovie){

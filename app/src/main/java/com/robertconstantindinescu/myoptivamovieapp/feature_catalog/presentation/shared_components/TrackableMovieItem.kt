@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -37,7 +38,8 @@ fun TrackableMovieItem(
     trackableMovie: TrackableMovie,
     onFavoriteToggle: () -> Unit = {},
     onTrackableMovieClick: () -> Unit = {},
-    isAddedToFav: Boolean = false
+    isAddedToFav: Boolean = false,
+    isFromFavorites : Boolean = false
 
 ) {
 
@@ -143,8 +145,8 @@ fun TrackableMovieItem(
         ) {
             Icon(
                 modifier = Modifier.size(IconSizeLarge),
-                imageVector =
-                Icons.Default.Favorite,
+                imageVector = if (isFromFavorites)
+                Icons.Default.Delete else Icons.Default.Favorite,
                 contentDescription = stringResource(id = R.string.ic_favorite),
                 tint = if (isAddedToFav) {
                     MaterialTheme.colors.primary
