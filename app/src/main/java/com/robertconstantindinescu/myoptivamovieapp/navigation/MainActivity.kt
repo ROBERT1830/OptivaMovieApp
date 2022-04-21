@@ -108,7 +108,8 @@ class MainActivity : ComponentActivity() {
                                     onNavigationToDetails = { externalMovieId ->
                                         navController.navigate(Screen.DetailsScreen.route + "/$externalMovieId")
 
-                                    }
+                                    },
+                                    scaffoldState = scaffoldState
                                 )
                             }
                         }
