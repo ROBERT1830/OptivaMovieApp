@@ -19,7 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CatalogScreenViewModel @Inject constructor(
     private val useCases: CatalogUseCases
-): ViewModel() {
+) : ViewModel() {
 
     var state by mutableStateOf(CatalogScreenState())
         private set
@@ -31,8 +31,8 @@ class CatalogScreenViewModel @Inject constructor(
         executeSearch()
     }
 
-    fun onEvent(event: CatalogScreenEvent){
-        when(event){
+    fun onEvent(event: CatalogScreenEvent) {
+        when (event) {
             //in case text field search is implemented
             is CatalogScreenEvent.SearchMovies -> {
                 executeSearch()
@@ -66,9 +66,11 @@ class CatalogScreenViewModel @Inject constructor(
                     state = state.copy(
                         isSearching = false
                     )
-                    _singleUiEvent.send(SingleUiEvent.ShowSnackBar(
-                        UiText.StringResource(R.string.generic_error)
-                    ))
+                    _singleUiEvent.send(
+                        SingleUiEvent.ShowSnackBar(
+                            UiText.StringResource(R.string.generic_error)
+                        )
+                    )
 
                 }
         }
@@ -80,18 +82,18 @@ class CatalogScreenViewModel @Inject constructor(
             state = state.copy(
 
                 trackableMovies = state.trackableMovies.map {
-                    if (it.name == trackableMovie.name){
+                    if (it.name == trackableMovie.name) {
                         it.copy(
                             isSavedToFav = !it.isSavedToFav!!
                         )
-                    }else it
+                    } else it
                 }
-
-                //isFavoriteToggle = !state.isFavoriteToggle
             )
-            _singleUiEvent.send(SingleUiEvent.ShowSnackBar(
-                UiText.StringResource(R.string.saved_to_favorites)
-            ))
+            _singleUiEvent.send(
+                SingleUiEvent.ShowSnackBar(
+                    UiText.StringResource(R.string.saved_to_favorites)
+                )
+            )
         }
 
     }
@@ -101,11 +103,15 @@ class CatalogScreenViewModel @Inject constructor(
             useCases.deleteFavoriteMovieFromCatalogScreen(trackableMovie = trackableMovie)
             state = state.copy(
                 trackableMovies = state.trackableMovies.map {
-                    if (it.name == trackableMovie.name){
+                    if (it.name == trackableMovie.name) {
                         it.copy(isSavedToFav = !it.isSavedToFav!!)
-                    }else it
+                    } else it
                 }
-                //isFavoriteToggle = false
+            )
+            _singleUiEvent.send(
+                SingleUiEvent.ShowSnackBar(
+                    UiText.StringResource(R.string.delete_from_favorites)
+                )
             )
         }
 
