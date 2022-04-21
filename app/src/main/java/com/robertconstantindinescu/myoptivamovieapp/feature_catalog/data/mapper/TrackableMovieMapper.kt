@@ -5,6 +5,7 @@ import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.domain.model
 
 fun Response.toTrackableMovie(): TrackableMovie {
     return TrackableMovie(
+        id = this.id,
         name = this.name,
         year = this.year,
         contentProvider = this.contentProvider,

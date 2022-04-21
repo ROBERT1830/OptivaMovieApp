@@ -3,10 +3,8 @@ package com.robertconstantindinescu.myoptivamovieapp.feature_catalog.presentatio
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.robertconstantindinescu.myoptivamovieapp.R
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.core.util.SingleUiEvent
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.core.util.UiText
@@ -43,7 +41,7 @@ class CatalogScreenViewModel @Inject constructor(
             is CatalogScreenEvent.OnTrackMovieClick -> {
                 trackMovie(event.movie)
             }
-            is CatalogScreenEvent.onDeleteTrackedMovieClick -> {
+            is CatalogScreenEvent.OnDeleteTrackedMovieClick -> {
                 deleteTrackedMovie(event.movie)
             }
         }
@@ -80,7 +78,16 @@ class CatalogScreenViewModel @Inject constructor(
         viewModelScope.launch {
             useCases.trackMovie(trackableMovie = trackableMovie)
             state = state.copy(
-                isFavoriteToggle = true
+
+                trackableMovies = state.trackableMovies.map {
+                    if (it.name == trackableMovie.name){
+                        it.copy(
+                            isSavedToFav = !it.isSavedToFav!!
+                        )
+                    }else it
+                }
+
+                //isFavoriteToggle = !state.isFavoriteToggle
             )
             _singleUiEvent.send(SingleUiEvent.ShowSnackBar(
                 UiText.StringResource(R.string.saved_to_favorites)
@@ -93,7 +100,12 @@ class CatalogScreenViewModel @Inject constructor(
         viewModelScope.launch {
             useCases.deleteTrackedMovie(trackableMovie = trackableMovie)
             state = state.copy(
-                isFavoriteToggle = false
+                trackableMovies = state.trackableMovies.map {
+                    if (it.name == trackableMovie.name){
+                        it.copy(isSavedToFav = !it.isSavedToFav!!)
+                    }else it
+                }
+                //isFavoriteToggle = false
             )
         }
 

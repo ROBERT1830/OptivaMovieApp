@@ -11,6 +11,7 @@ class TrackMovie(
     suspend operator fun invoke(trackableMovie: TrackableMovie){
         repository.insertTrackedMovie(
             TrackedMovie(
+                id = trackableMovie.id,
                 name = trackableMovie.name?:"",
                 year = trackableMovie.year?:-1,
                 contentProvider = trackableMovie.contentProvider?:"",

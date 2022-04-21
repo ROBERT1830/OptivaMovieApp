@@ -41,7 +41,9 @@ fun TrackableMovieItem(
 
 ) {
 
+
     val spacing = LocalSpacing.current
+    // TODO: EXTRACT AS A USE CASE BECAUSE IS BUSINESS LOGIC
     //Get image url
     val imageUrl = trackableMovie.attachments.find {
         it.name == IMAGE_NAME

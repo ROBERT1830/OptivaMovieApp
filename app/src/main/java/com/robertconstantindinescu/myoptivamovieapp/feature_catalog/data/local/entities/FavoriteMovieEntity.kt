@@ -19,7 +19,7 @@ data class FavoriteMovieEntity(
 //    val contentProvider: String,
 //    val definition: String,
 //    val genre: String,
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     var id: Int? = null,
 //    var externalId: String,
 //    var result: Response,

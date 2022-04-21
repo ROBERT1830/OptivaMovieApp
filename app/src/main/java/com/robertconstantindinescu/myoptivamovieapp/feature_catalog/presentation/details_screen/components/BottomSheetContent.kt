@@ -84,12 +84,12 @@ fun BottomSheetContent(
                     color = Color.White.copy(alpha = 0.7f)
                 )
                 Text(
-                    text = "Duración: ${TimeUnit.MILLISECONDS.toMinutes(movie.duration.toLong())}",
+                    text = "Duración: ${TimeUnit.MILLISECONDS.toMinutes(movie.duration.toLong())} min",
                     style = MaterialTheme.typography.h6,
                     color = Color.White.copy(alpha = 0.7f)
                 )
                 Text(
-                    text = "Duración: ${movie.definition}",
+                    text = "Calidad: ${movie.definition}",
                     style = MaterialTheme.typography.h6,
                     color = Color.White.copy(alpha = 0.7f)
                 )
