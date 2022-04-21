@@ -4,6 +4,7 @@ import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.domain.model
 
 sealed class CatalogScreenEvent{
     object SearchMovies: CatalogScreenEvent()
+    object CheckFavoriteMovieDatabase: CatalogScreenEvent()
     data class OnTrackMovieClick(
         val movie: TrackableMovie
     ):CatalogScreenEvent()

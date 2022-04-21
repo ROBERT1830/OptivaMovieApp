@@ -48,6 +48,10 @@ fun CatalogScreen(
 
         }
     }
+    // TODO: launched effect block that triggers again when database change
+    LaunchedEffect(key1 = state.trackedMovies){
+        viewModel.onEvent(CatalogScreenEvent.CheckFavoriteMovieDatabase)
+    }
 
 
 
