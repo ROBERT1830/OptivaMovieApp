@@ -103,7 +103,12 @@ class MainActivity : ComponentActivity() {
                                 )
                             }
                             composable(route = BottomMenuScreen.Favorites.route) {
-                                FavoritesScreen(navController = navController)
+                                FavoritesScreen(
+                                    onNavigationToDetails = { externalMovieId ->
+                                        navController.navigate(Screen.DetailsScreen.route + "/$externalMovieId")
+
+                                    }
+                                )
                             }
                         }
                     }
