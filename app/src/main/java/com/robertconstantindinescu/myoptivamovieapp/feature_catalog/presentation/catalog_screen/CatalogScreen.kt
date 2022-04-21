@@ -32,7 +32,8 @@ fun CatalogScreen(
     Column(modifier = Modifier
         .fillMaxSize()
     ) {
-        LazyColumn(modifier = Modifier.fillMaxSize()
+        LazyColumn(modifier = Modifier
+            .fillMaxSize()
             .padding(PaddingValues(bottom = 50.dp))){
             items(state.trackableMovies){ movie ->
                 TrackableMovieItem(
@@ -44,8 +45,14 @@ fun CatalogScreen(
                         movie.externalId?.let { onNavigateToDetails(it) }
                     },
                     onFavoriteToggle = {
-                        viewModel.onEvent(CatalogScreenEvent.OnTrackMovieClick(movie = movie))
-                    }
+                        if (movie.isSavedToFav!!){
+                            viewModel.onEvent(CatalogScreenEvent.OnDeleteTrackedMovieClick(movie = movie))
+                        }else{
+                            viewModel.onEvent(CatalogScreenEvent.OnTrackMovieClick(movie = movie))
+                        }
+
+                    },
+                    isAddedToFav = movie.isSavedToFav!!
                 )
 
             }

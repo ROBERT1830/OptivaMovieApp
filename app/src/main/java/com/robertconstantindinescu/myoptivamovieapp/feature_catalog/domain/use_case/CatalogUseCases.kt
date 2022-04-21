@@ -3,7 +3,8 @@ package com.robertconstantindinescu.myoptivamovieapp.feature_catalog.domain.use_
 data class CatalogUseCases(
     val searchMovies: SearchMovies,
     val trackMovie: TrackMovie,
-    val deleteTrackedMovie: DeleteTrackedMovie,
+    val deleteFavoriteMovieFromCatalogScreen: DeleteFavoriteMovieFromCatalogScreen,
     val getTrackedMovies: GetTrackedMovies,
-    val searchMovie: SearchMovie
+    val searchMovie: SearchMovie,
+    val deleteFavoriteMovieFromFavScreen: DeleteFavoriteMovieFromFavScreen
 )

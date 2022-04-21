@@ -7,7 +7,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
-import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(ViewModelComponent::class)
@@ -21,9 +20,10 @@ object CatalogDomainModule {
         return CatalogUseCases(
             searchMovies = SearchMovies(repository),
             trackMovie = TrackMovie(repository),
-            deleteTrackedMovie = DeleteTrackedMovie(repository),
+            deleteFavoriteMovieFromCatalogScreen = DeleteFavoriteMovieFromCatalogScreen(repository),
             getTrackedMovies = GetTrackedMovies(repository),
-            searchMovie = SearchMovie(repository)
+            searchMovie = SearchMovie(repository),
+            deleteFavoriteMovieFromFavScreen = DeleteFavoriteMovieFromFavScreen(repository)
         )
     }
 }
