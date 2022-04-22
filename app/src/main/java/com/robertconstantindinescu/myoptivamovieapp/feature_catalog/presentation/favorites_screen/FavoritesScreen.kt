@@ -3,17 +3,18 @@ package com.robertconstantindinescu.myoptivamovieapp.feature_catalog.presentatio
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.ScaffoldState
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.robertconstantindinescu.myoptivamovieapp.R
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.core.util.LocalSpacing
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.core.util.SingleUiEvent
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.presentation.catalog_screen.CatalogScreenEvent
@@ -39,9 +40,15 @@ fun FavoritesScreen(
         viewModel.singleUiEvent.collectLatest { event ->
             when(event){
                 is SingleUiEvent.ShowSnackBar -> {
-                    scaffoldState.snackbarHostState.showSnackbar(
-                        message = event.message.asString(context)
+                    var snackBarResult: SnackbarResult? = null
+                    snackBarResult = scaffoldState.snackbarHostState.showSnackbar(
+                        message = event.message.asString(context),
+                        actionLabel = "Undo"
                     )
+                    if (snackBarResult == SnackbarResult.ActionPerformed){
+                        viewModel.onEvent(FavoritesScreenEvent.OnRestoreFavoriteMovie)
+                    }
+
                 }
                 else -> {}
             }
@@ -72,6 +79,20 @@ fun FavoritesScreen(
             }
         }
 
+    }
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ){
+        when{
+            state.favoriteMoviesList.isEmpty() -> {
+                Text(
+                    text = stringResource(id = R.string.no_results),
+                    style = MaterialTheme.typography.body1,
+                    textAlign = TextAlign.Center
+                )
+            }
+        }
     }
 
 }

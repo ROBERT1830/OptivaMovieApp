@@ -5,4 +5,6 @@ import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.domain.model
 sealed class FavoritesScreenEvent {
     //object GetFavoriteMovies: FavoritesScreenEvent()
     data class OnDeleteFavoriteMovie(val movie: TrackedMovie): FavoritesScreenEvent()
+    object OnRestoreFavoriteMovie: FavoritesScreenEvent()
+
 }

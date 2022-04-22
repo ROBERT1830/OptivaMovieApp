@@ -24,7 +24,8 @@ object CatalogDomainModule {
             getTrackedMovies = GetTrackedMovies(repository),
             searchMovie = SearchMovie(repository),
             deleteFavoriteMovieFromFavScreen = DeleteFavoriteMovieFromFavScreen(repository),
-            getMovieImage = GetMovieImage()
+            getMovieImage = GetMovieImage(),
+            restoreFavoriteMovie = RestoreFavoriteMovie(repository)
         )
     }
 }

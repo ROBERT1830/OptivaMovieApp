@@ -12,6 +12,7 @@ import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.core.util.Ui
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.domain.model.TrackedMovie
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.domain.use_case.CatalogUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.launchIn
@@ -32,6 +33,7 @@ class FavoritesScreenViewModel @Inject constructor(
     private val _singleUiEvent = Channel<SingleUiEvent>()
     val singleUiEvent = _singleUiEvent.receiveAsFlow()
 
+    private var lastDeletedImcRecord: TrackedMovie? = null
     private var getFavoriteMovies: Job? = null
 
     init {
@@ -43,12 +45,21 @@ class FavoritesScreenViewModel @Inject constructor(
             is FavoritesScreenEvent.OnDeleteFavoriteMovie -> {
                 deleteFavoriteMovie(event.movie)
             }
+            is FavoritesScreenEvent.OnRestoreFavoriteMovie -> {
+                viewModelScope.launch(Dispatchers.IO) {
+                    lastDeletedImcRecord?.let {
+                        useCases.restoreFavoriteMovie(lastDeletedImcRecord!!)
+                    }
+
+                }
+            }
         }
     }
 
     private fun deleteFavoriteMovie(movie: TrackedMovie) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             useCases.deleteFavoriteMovieFromFavScreen(movie = movie)
+            lastDeletedImcRecord = movie
             refreshFavoriteMovies()
             _singleUiEvent
                 .send(
