@@ -21,3 +21,4 @@ class TypeConverter {
         return gson.toJson(result)
     }
 }
+

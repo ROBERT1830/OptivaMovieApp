@@ -44,7 +44,7 @@ class CatalogScreenViewModel @Inject constructor(
         when (event) {
             //in case text field search is implemented
             is CatalogScreenEvent.SearchMovies -> {
-                executeSearch()
+                //executeSearch()
             }
             //Add to favorites
             is CatalogScreenEvent.OnTrackMovieClick -> {
@@ -87,8 +87,6 @@ class CatalogScreenViewModel @Inject constructor(
             movieFinded?.let {
                 list.add(movieFinded)
             }
-
-
         }
         state = state.copy(
             trackableMovies = state.trackableMovies.map {
@@ -117,14 +115,6 @@ class CatalogScreenViewModel @Inject constructor(
 
         val movieImage = useCases.getMovieImage(trackableMovie = trackableMovie)
         state = state.copy(movieImage = movieImage)
-
-//        state.trackableMovies.map {
-//            if (it.name == trackableMovie.name) {
-//                it.copy(imageUrl = movieImage)
-//            } else it
-//        }
-
-
     }
 
     private fun executeSearch() {

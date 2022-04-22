@@ -4,9 +4,6 @@ import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.data.remote.
 
 data class TrackedMovie(
     var id: Int? = null,
-//    var externalId: String,
-//    var result: Response,
-//    var name: String,
     val name: String,
     val year: Int,
     val contentProvider: String,

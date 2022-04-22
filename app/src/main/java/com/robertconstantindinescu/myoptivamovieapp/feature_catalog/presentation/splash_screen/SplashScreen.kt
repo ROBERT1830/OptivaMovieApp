@@ -25,6 +25,7 @@ fun SplashScreen(
 ) {
 
     val scale = remember {
+        //float value holder
         Animatable(0f)
     }
     val overshootInterpolator = remember {
@@ -36,7 +37,7 @@ fun SplashScreen(
             animationSpec = tween(
                 durationMillis = 700,
                 easing = {
-                    //fraction of animation tht is allready played.
+                    //fraction of animation that  is already played.
                     overshootInterpolator.getInterpolation(it)
                 }
             )

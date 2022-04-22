@@ -23,15 +23,12 @@ import com.robertconstantindinescu.myoptivamovieapp.ui.theme.MIN_SHEET_HEIGHT
 @Composable
 fun DetailsScreen(
     viewModel: DetailsScreenViewModel = hiltViewModel(),
-    scrollState: ScrollState,
-    scaffoldState: ScaffoldState,
-    externalMovieId: String,
     onNavigateUp: () -> Unit
 ) {
 
     val state = viewModel.state
 
-
+    //remember bottom sheet state
     val scaffoldState = rememberBottomSheetScaffoldState(
         bottomSheetState = rememberBottomSheetState(initialValue = BottomSheetValue.Expanded)
     )
@@ -88,8 +85,10 @@ fun DetailsScreen(
 @ExperimentalMaterialApi
 val BottomSheetScaffoldState.currentSheetFraction: Float
     get() {
+        //fraction of the bottomSheetState
         val fraction = bottomSheetState.progress.fraction
         val targetValue = bottomSheetState.targetValue
+        //change value according to last anchor
         val currentValue = bottomSheetState.currentValue
 
         return when {

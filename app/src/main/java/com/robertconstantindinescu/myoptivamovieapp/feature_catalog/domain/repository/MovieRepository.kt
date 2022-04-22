@@ -11,8 +11,6 @@ interface MovieRepository {
     suspend fun searchMovie(movieId: String): Result<ExtendedTrackableMovie>
 
 
-    // TODO: implement functions for local
-
     suspend fun insertTrackedMovie(movie: TrackedMovie)
     suspend fun deleteTrackedMovie(movie: TrackedMovie)
     fun getTrackedMovies(): Flow<List<TrackedMovie>>

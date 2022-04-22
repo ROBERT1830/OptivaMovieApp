@@ -35,3 +35,4 @@ data class Response(
     @Json(name = "year")
     val year: Int
 ): Parcelable
+

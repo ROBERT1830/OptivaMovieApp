@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyOptivaMovieAppTheme {
 
-                //Keep track of the navigation
+                //Keep track of the navigation, composable screen and backStack.
                 val navController = rememberNavController()
                 val navBackStackEntry by navController.currentBackStackEntryAsState()
                 val showBottomMenu = navBackStackEntry?.destination?.route in listOf(
@@ -40,8 +40,6 @@ class MainActivity : ComponentActivity() {
                 )
                 //For showing toast messages in coroutineScope
                 val scaffoldState = rememberScaffoldState()
-                //For performing scroll in details
-                val scrollState = rememberScrollState()
 
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -104,9 +102,6 @@ class MainActivity : ComponentActivity() {
                                 val externalMovieId = it.arguments?.getString(DETAILS_ARGUMENT_KEY)!!
 
                                 DetailsScreen(
-                                    scrollState = scrollState,
-                                    scaffoldState = scaffoldState,
-                                    externalMovieId = externalMovieId,
                                     onNavigateUp = {
                                         navController.navigateUp()
                                     }
