@@ -7,6 +7,7 @@ object Constants {
 
     const val ABOUT_TEXT_LINES = 7
     const val MIN_BACKGROUND_IMAGE = 0.4f
+    const val SPLASH_SCREEN_DURATION = 3000L
 
 
 }

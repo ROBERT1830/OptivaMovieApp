@@ -18,6 +18,7 @@ import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.presentation
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.presentation.details_screen.DetailsScreen
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.presentation.favorites_screen.FavoritesScreen
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.presentation.shared_components.BottomNavMenu
+import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.presentation.splash_screen.SplashScreen
 import com.robertconstantindinescu.myoptivamovieapp.navigation.util.Constants.DETAILS_ARGUMENT_KEY
 import com.robertconstantindinescu.myoptivamovieapp.ui.theme.MyOptivaMovieAppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -71,15 +72,24 @@ class MainActivity : ComponentActivity() {
                         }) {
                         NavHost(
                             navController = navController,
-                            startDestination = BottomMenuScreen.Catalog.route
+                            startDestination = Screen.SplashScreen.route
                         ) {
+
+                            composable(route = Screen.SplashScreen.route){
+                                SplashScreen(){
+                                    navController.popBackStack()
+                                    navController.navigate(BottomMenuScreen.Catalog.route)
+                                }
+                            }
+
                             composable(route = BottomMenuScreen.Catalog.route) {
                                 CatalogScreen(
                                     onNavigateToDetails = {externalMovieId ->
                                         navController.navigate(
                                             Screen.DetailsScreen.route + "/$externalMovieId"
                                         )
-                                    }
+                                    },
+                                    scaffoldState = scaffoldState
                                 )
                             }
 
@@ -107,7 +117,8 @@ class MainActivity : ComponentActivity() {
                                     onNavigationToDetails = { externalMovieId ->
                                         navController.navigate(Screen.DetailsScreen.route + "/$externalMovieId")
 
-                                    }
+                                    },
+                                    scaffoldState = scaffoldState
                                 )
                             }
                         }

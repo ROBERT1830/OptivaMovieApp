@@ -22,7 +22,9 @@ import coil.compose.rememberImagePainter
 import com.robertconstantindinescu.myoptivamovieapp.R
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.core.util.LocalSpacing
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.domain.model.TrackableMovie
+import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.presentation.catalog_screen.CatalogScreenEvent
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.presentation.catalog_screen.CatalogScreenState
+import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.presentation.catalog_screen.CatalogScreenViewModel
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.presentation.util.Constants.BASE_IMAGE_URL
 import com.robertconstantindinescu.myoptivamovieapp.feature_catalog.presentation.util.Constants.IMAGE_NAME
 import com.robertconstantindinescu.myoptivamovieapp.ui.theme.IconSizeLarge
@@ -39,23 +41,15 @@ fun TrackableMovieItem(
     onFavoriteToggle: () -> Unit = {},
     onTrackableMovieClick: () -> Unit = {},
     isAddedToFav: Boolean = false,
-    isFromFavorites : Boolean = false
+    isFromFavorites : Boolean = false,
+    viewModel: CatalogScreenViewModel
 
 ) {
-
-
     val spacing = LocalSpacing.current
-    // TODO: EXTRACT AS A USE CASE BECAUSE IS BUSINESS LOGIC
-    //Get image url
-    val imageUrl = trackableMovie.attachments.find {
-        it.name == IMAGE_NAME
-    }.run {
-        this?.let {
-            this.value
-        }
-    }
 
-    Log.d("BASE_IMAGE_URL", "$BASE_IMAGE_URL${imageUrl}")
+    //GET IMAGE WITH USE CASE
+    viewModel.onEvent(CatalogScreenEvent.GetMovieImage(trackableMovie))
+    val imageUrl = viewModel.state.movieImage
 
 
     val painter = rememberImagePainter(data = "$BASE_IMAGE_URL${imageUrl}") {
